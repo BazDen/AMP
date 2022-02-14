@@ -1,0 +1,29 @@
+{% if content.layout==1 %}
+    <div class="card shadow m-1" style="width:49%;">
+{% elif content.layout==2 %}
+    <div class="card shadow m-1" style="width:29%">
+{% elif content.layout==3 %}
+    <div class="card shadow m-1" style="width:24%">
+{% else %}
+    <div class="card shadow m-1" style="width:99%">	
+{% endif %}
+    <div class="card-header bg-dark m-0 p-0" style="color:white;"><center>
+		<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; 
+		<i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i> &nbsp;
+	Dropdown
+</div>
+<div class="card-body m-2 p-0">
+  <center><div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div></center>
+</div>
+</div>   

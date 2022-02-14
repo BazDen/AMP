@@ -1,0 +1,56 @@
+<div class="container">
+<div class="card shadow">	
+<div class="card-header bg-dark m-0 p-0" style="color:white;"><center>{{ content.labels.users }}</center>
+</div>
+<div class="card-body">
+	<table class="table table-stripped table-hover table-sm">
+			<div class="row border">
+			  <div class="col-sm-1 d-none d-sm-block" style="padding:0rem;"><center><b>№№</b></center></div>
+			  <div class="col-sm-2 d-none d-sm-block" style="padding:0rem;"><b>{{ content.labels.user }}&nbsp;</b></div>
+			  <div class="col-sm-3 d-none d-sm-block" style="padding:0rem;"><b>{{ content.labels.fullname }}&nbsp;</b></div>
+			  <div class="col-sm-2 d-none d-sm-block" style="padding:0rem;"><b>{{ content.labels.group }}&nbsp;</b></div>
+			  <div class="col-sm-2 d-none d-sm-block" style="padding:0rem;"><b>{{ content.labels.status }}&nbsp;</b></div>
+			  <div class="col-sm-1 d-none d-sm-block" style="padding:0rem;"><center><b>{{ content.labels.tz }}&nbsp;</b></center></div>
+			  <div class="col-sm-1 d-none d-sm-block" style="padding:0rem;"></div>
+			</div>
+			{% for u in content.users %}
+			<div class="row border-bottom">
+				<div class="col-sm-1 d-none d-sm-block" style="padding:0rem;"><center>{{ loop.index }}</center></div>
+				<div class="col-sm-2" style="padding:0rem;">
+					{{ u.username }}
+				</div>
+				<div class="col-sm-3" style="padding:0rem;">
+					{{ u.fullname }}
+				</div>
+				<div class="col-sm-2" style="padding:0rem;">
+					{% for g in content.groups %}
+						{% if g.id==u.group %}
+							{{ g.name }}
+						{% endif %}
+					{% endfor %}	
+				</div>
+				<div class="col-sm-2" {% if u.status|int==4 %} style="padding:0rem;background-color:red;" {% else %} style="padding:0rem;" {% endif %}>
+					{% for s in content.status %}
+						{% if s.id==u.status|int %}
+							{{ s.name }}
+						{% endif %}
+					{% endfor %}	
+				</div>
+				<div class="col-sm-1 d-none d-sm-block" style="padding:0rem;">
+					<center>
+					{{ content.tz[u.tz-1].name }}
+					</center>
+				</div>
+				<div class="col-sm-1" style="padding:0rem;">
+					{% include '/tools/user_actions.html' %}
+				</div>
+			</div>
+			{% endfor %}
+	</table>
+	<center><button type="button" class="btn-sm bg-dark" data-toggle="modal" data-target="#UserModal" data-type='new' title=" {{ content.labels.adduser }}" style="color:white;"><i class="fa fa-plus" aria-hidden="true" style="font-size:100%;"></i>  {{ content.labels.adduser }}</button></center>
+</div>
+</div>
+</div>
+{% include '/forms/user.html' %}
+{% include '/forms/user_remove.html' %}
+{% include '/forms/user_change_pass.html' %}

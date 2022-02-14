@@ -1,0 +1,53 @@
+{% if content.layout==1 %}
+    <div class="card shadow m-1" style="width:49%;">
+{% elif content.layout==2 %}
+    <div class="card shadow m-1" style="width:29%">
+{% elif content.layout==3 %}
+    <div class="card shadow m-1" style="width:24%">
+{% else %}
+    <div class="card shadow m-1" style="width:99%">	
+{% endif %}
+    <div class="card-header bg-dark m-0 p-0" style="color:white;"><center>
+		<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; 
+		<i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i> &nbsp;
+	Stacked bar chart
+</div>
+<div class="card-body m-2 p-0">
+	<div id='c6'></div>
+	<script>
+		var chart6 = c3.generate({
+            bindto: '#c6',
+            data: {
+                columns: [
+                    ['data1', -30, 200, 200, 400, -150, 250],
+                    ['data2', 130, 100, -100, 200, -150, 50],
+                    ['data3', -230, 200, 200, -300, 250, 250]
+                ],
+                type: 'bar',
+                groups: [
+                    ['data1', 'data2']
+                ]
+            },
+            grid: {
+                y: {
+                    lines: [{value:0}]
+                }
+            }
+        });
+
+        setTimeout(function () {
+            chart6.groups([['data1', 'data2', 'data3']])
+        }, 1000);
+
+        setTimeout(function () {
+            chart6.load({
+                columns: [['data4', 100, -50, 150, 200, -300, -100]]
+            });
+        }, 1500);
+
+        setTimeout(function () {
+            chart6.groups([['data1', 'data2', 'data3', 'data4']])
+        }, 2000);
+	</script>
+</div>
+</div>    

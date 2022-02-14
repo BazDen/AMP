@@ -1,0 +1,32 @@
+<div class="container-fluid">
+<div class="card shadow">	
+<div class="card-header bg-dark m-0 p-0" style="color:white;"><center>{{ content.labels.user_settings }}</center>
+</div>
+<div class="card-body">
+	<center>
+	<table class="table table-stripped table-hover table-sm">
+			<div class="row border">
+			  <div class="col-sm-2 d-none d-sm-block" style="padding:0rem;"><b>{{ content.labels.user }}&nbsp;</b></div>
+			  <div class="col-sm-3 d-none d-sm-block" style="padding:0rem;"><b>{{ content.labels.name }}&nbsp;</b></div>
+			  <div class="col-sm-2 d-none d-sm-block" style="padding:0rem;"><b>{{ content.labels.group }}&nbsp;</b></div>
+			  <div class="col-sm-2 d-none d-sm-block" style="padding:0rem;"><b>{{ content.labels.status }}&nbsp;</b></div>
+			  <div class="col-sm-1 d-none d-sm-block" style="padding:0rem;"><center><b>{{ content.labels.tz }}&nbsp;</b></center></div>
+			  <div class="col-sm-1 d-none d-sm-block" style="padding:0rem;"></div>
+			</div>
+
+			<div class="row border-bottom">
+				<div class="col-sm-2" style="padding:0rem;">{{ u.username }}</div>
+				<div class="col-sm-3" style="padding:0rem;">{{ u.fullname }}</div>
+				<div class="col-sm-2" style="padding:0rem;">{{ content.groupname }}</div>
+				<div class="col-sm-2" style="padding:0rem;">{{ content.userstatus }}</div>
+				<div class="col-sm-1 d-none d-sm-block" style="padding:0rem;">
+					<center>{{ content.usertz }}</center>
+				</div>
+				<div class="col-sm-1" style="padding:0rem;">{% include '/tools/user_actions.html' %}</div>
+			</div>
+	</table>
+{% include '/forms/user.html' %}
+{% include '/forms/user_change_pass.html' %}
+</div>
+</div>
+</div>

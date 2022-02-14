@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    restart: always
+    network_mode: bridge
+    ports:
+      - 80:80
+    image: amp
+    command: uvicorn main:app --reload --port 80 --host 0.0.0.0
+    

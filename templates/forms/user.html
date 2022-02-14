@@ -1,0 +1,89 @@
+<div class="modal fade" id="UserModal" name="UserModal" aria-labelledby="UserModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark" style="padding:5px 5px;color:white;">
+        <center>&nbsp;&nbsp;{{ content.labels.user }}</center>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		<form action="/user/" method="post">
+			<div class="form-group" style="margin-bottom:0rem;">
+			<div class="modal-body" style="padding:5px 5px;">
+				<table class="table-borderless" width=100%>
+				<input class="form-control" id="id" name="id" type="hidden">
+				<input class="form-control" id="path" name="path" type="hidden" value="{{ content.path }}">
+				<input class="form-control" id="type" name="type" type="hidden">
+				{% if content.user.status|int == 1 %}
+				<tr><td><label for="username">{{ content.labels.username }}</label></td><td><input class="form-control" id="username" name="username" type="text" required></td>
+				{% endif %}
+				<tr><td><label for="fullname">{{ content.labels.fullname }}</label></td><td><input class="form-control" id="fullname" name="fullname" type="text" required></td>
+				<tr><td><label for="password">{{ content.labels.password }}</label></td><td><input class="form-control" id="password" name="password" type="password" required minlength=7></td>
+				{% if content.user.status|int == 1 %}
+				<tr><td><label for="group">{{ content.labels.group }}</label></td><td><select class="form-control" id="group" name="group" required>
+				{% for g in content.groups %}
+					<option value="{{ g.id }}">{{ g.name }}</option>
+				{% endfor %}
+				</select></td>
+				<tr><td><label for="u_status">{{ content.labels.status }}</label></td><td><select class="form-control" id="u_status" name="u_status" required>
+				{% for s in content.status %}
+					<option value="{{ s.id }}">{{ s.name }}</option>
+				{% endfor %}
+				</select></td>
+				{% endif %}
+				<tr><td><label for="tz">{{ content.labels.language }}</label></td><td><select class="form-control" id="lang" name="lang" required>
+					{% for l in content.lang %}
+						<option value="{{ l.id }}">{{ l.name }}</option>
+					{% endfor %}
+				</select></td>
+				<tr><td><label for="tz">{{ content.labels.tz }}</label></td><td><select class="form-control" id="tz" name="tz" required>
+				{% for t in content.tz %}
+					<option value="{{ t.id }}">{{ t.name }}</option>
+				{% endfor %}
+				</select></td>
+				</table>
+
+			</div>
+			<div class="modal-footer" style="padding:5px 5px;">
+					<button type="submit" class="btn btn-outline-primary">{{ content.labels.save }}</button>
+					<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">{{ content.labels.cancel }}</button>
+			</div>
+			</div>
+		</form>
+    </div>
+  </div>
+</div>
+<script>
+$('#UserModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var type = button.data('type')
+  var username = button.data('username')
+  var fullname = button.data('fullname')
+  var group = button.data('group')
+  var u_status = button.data('status')
+  var tz = button.data('tz')
+  var lang = button.data('lang')
+  var id = button.data('id')
+  var modal = $(this)
+  modal.find('[name=type]').val(type)
+  modal.find('[name=username]').val(username)
+  modal.find('[name=fullname]').val(fullname)
+  modal.find('[name=group]').val(group)
+  modal.find('[name=u_status]').val(u_status)
+  modal.find('[name=tz]').val(tz)
+  modal.find('[name=lang]').val(lang)
+  modal.find('[name=id]').val(id)
+  if (type == 'new'){
+		$("label[for='password']").show();
+		$("#password").show();
+		$("#password").val('');
+	}
+  else if (type == 'edit'){
+		$("label[for='password']").hide();
+		$("#password").hide();
+		$("#password").val('**********');
+
+  }
+	
+})
+</script>

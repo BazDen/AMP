@@ -1,0 +1,29 @@
+<div class="container-fluid">
+<div class="card shadow">	
+<div class="card-header bg-dark m-0 p-0" style="color:white;"><center>{{ content.labels.groups }}</center>
+</div>
+<div class="card-body">
+	<table class="table table-stripped table-hover table-sm">
+			<div class="row border">
+			  <div class="col-sm-1 d-none d-sm-block" style="padding:0rem;"><center><b>№№</b></center></div>
+			  <div class="col-sm-9 d-none d-sm-block" style="padding:0rem;"><center><b>{{ content.labels.name }}</b></center></div>
+			  <div class="col-sm-2 d-none d-sm-block" style="padding:0rem;"></div>
+			</div>
+			{% for group in content.groups %}
+			<div class="row border-bottom">
+				<div class="col-sm-1 d-none d-sm-block" style="padding:0rem;"><center>{{ loop.index }}</center></div>
+				<div class="col-sm-9" style="padding:0rem;">
+					<center>{{ group.name }}</center>
+				</div>
+				<div class="col-sm-2" style="padding:0rem;">
+					{% include '/tools/group_actions.html' %}
+				</div>
+			</div>
+			{% endfor %}
+	</table>
+		<center><button type="button" class="btn-sm bg-dark" data-toggle="modal" data-target="#GroupModal" data-type='new' title=" {{ content.labels.addgroup }}" style="color:white;"><i class="fa fa-plus" aria-hidden="true" style="font-size:100%;"></i> {{ content.labels.addgroup }}</button></center>
+</div>
+</div>
+</div>
+{% include '/forms/group.html' %}
+{% include '/forms/group_remove.html' %}

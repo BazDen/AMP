@@ -1,0 +1,54 @@
+{% if content.layout==1 %}
+    <div class="card shadow m-1" style="width:49%;">
+{% elif content.layout==2 %}
+    <div class="card shadow m-1" style="width:29%">
+{% elif content.layout==3 %}
+    <div class="card shadow m-1" style="width:24%">
+{% else %}
+    <div class="card shadow m-1" style="width:99%">	
+{% endif %}
+    <div class="card-header bg-dark m-0 p-0" style="color:white;"><center>
+		<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; 
+		<i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i> &nbsp;
+	Step chart
+</div>
+<div class="card-body m-2 p-0">
+	<div id='c3'></div>
+	<script>
+		var chart3 = c3.generate({
+            bindto: '#c3',
+            data: {
+                columns: [
+                    ['data1', 300, 350, 300, 0, 0, 100],
+                    ['data2', 130, 100, 140, 200, 150, 50]
+                ],
+                types: {
+                    data1: 'step',
+                    data2: 'area-step'
+                }
+            }
+        });
+        setTimeout(function () {
+            chart3.load({
+                columns: [
+                    ['data1', 230, 190, 300, 500, 300, 400]
+                ]
+            });
+        }, 1000);
+
+        setTimeout(function () {
+            chart3.load({
+                columns: [
+                    ['data3', 130, 150, 200, 300, 200, 100]
+                ]
+            });
+        }, 1500);
+
+        setTimeout(function () {
+            chart3.unload({
+                ids: 'data1'
+            });
+        }, 2000);
+	</script>
+</div>
+</div>    

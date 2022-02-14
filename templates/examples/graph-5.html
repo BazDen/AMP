@@ -1,0 +1,45 @@
+{% if content.layout==1 %}
+    <div class="card shadow m-1" style="width:49%;">
+{% elif content.layout==2 %}
+    <div class="card shadow m-1" style="width:29%">
+{% elif content.layout==3 %}
+    <div class="card shadow m-1" style="width:24%">
+{% else %}
+    <div class="card shadow m-1" style="width:99%">	
+{% endif %}
+    <div class="card-header bg-dark m-0 p-0" style="color:white;"><center>
+		<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; 
+		<i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i> &nbsp;
+	Bar chart
+</div>
+<div class="card-body m-2 p-0">
+	<div id='c5'></div>
+	<script>
+		var chart5 = c3.generate({
+            bindto: '#c5',
+            data: {
+                columns: [
+                    ['data1', 30, 200, 100, 400, 150, 250],
+                    ['data2', 130, 100, 140, 200, 150, 50]
+                ],
+                type: 'bar'
+            },
+            bar: {
+                width: {
+                    ratio: 0.5 // this makes bar width 50% of length between ticks
+                }
+                // or
+                //width: 100 // this makes bar width 100px
+            }
+        });
+
+        setTimeout(function () {
+            chart5.load({
+                columns: [
+                    ['data3', 130, -150, 200, 300, -200, 100]
+                ]
+            });
+        }, 1000);
+	</script>
+</div>
+</div>    

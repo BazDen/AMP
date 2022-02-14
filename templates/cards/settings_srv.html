@@ -1,0 +1,18 @@
+<div class="container-fluid">
+<div class="card shadow">	
+<div class="card-header bg-dark m-0 p-0" style="color:white;"><center>{{ content.labels.server_settings }}</center>
+</div>
+<div class="card-body">
+	<center>
+	<table class="table table-stripped table-hover table-sm">
+			<div class="row border">
+			  <div class="col-sm-2" style="padding:0rem;"><b>{{ content.labels.tz }}</b></div>
+			  <div class="col-sm-8" style="padding:0rem;"> {{ content.srvtz_name }} </div>
+			  <div class="col-sm-2" style="padding:0rem;">{% include '/tools/tz.html' %}</div>
+			</div>
+
+	</table>
+{% include '/forms/tz.html' %}
+</div>
+</div>
+</div>

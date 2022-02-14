@@ -1,0 +1,21 @@
+<div class="col-md-auto m-0 p-0 collapse" id="navbarToggle">
+<ul class="nav nav-tabs bg-dark">
+  <li class="nav-item">
+    <a class="nav-link {% if content.path == 'index' %}active text-dark {% else %} text-light {% endif %}" href="/admin/">{{ content.labels.dashboard }}</a>
+  </li>
+  {% if content.user.status|int==1 %}
+  <li class="nav-item">
+    <a class="nav-link {% if content.path == 'users' %}active text-dark {% else %} text-light {% endif %}" href="/admin/users/">{{ content.labels.users }}</a>
+  </li>
+  {% endif %}
+  <li class="nav-item">
+    <a class="nav-link {% if content.path == 'settings' %}active text-dark {% else %} text-light {% endif %}" href="/admin/settings/">{{ content.labels.settings }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="/docs/">API</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="/">{{ content.labels.exit }}</a>
+  </li>
+</ul>
+</div>

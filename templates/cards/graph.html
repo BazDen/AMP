@@ -1,0 +1,65 @@
+<div class="card-header bg-dark m-0 p-0" style="color:white;"><center>
+	{% if dev.status == 5 %}
+		<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; 
+	{% else %}
+		<i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i> &nbsp;
+	{% endif %}	
+	{{ dev.name }}
+</div>
+{% if dev.status == 5 %}
+<div class="card-body m-2 p-0">
+	<div id='c{{ dev.id }}'></div>
+	<script>
+		var chart{{ dev.id }};
+		$.post("/getchartdata/{{ dev.id }}/{{ content.layout }}/", function(data) {
+			data.data.unshift(data.label);
+			data.time.unshift('x');
+			chart{{ dev.id }} = c3.generate({
+				bindto: '#c{{ dev.id }}',
+				size: {
+					height: 150,
+				},
+				data: {
+				  x : 'x',	
+				  columns: [
+					data.time,
+					data.data, 
+				  ],
+				  type: 'area-step',
+				  
+				},
+				color: {
+					pattern: [data.color],
+				   },	
+				axis: {
+					x: {
+						show: false,
+						type: 'category',
+					},
+					y: {
+						show: false,
+					},
+				},
+			});
+		});
+		function update{{dev.id}}() {
+			$.post("/getchartdata/{{ dev.id }}/{{ content.layout }}/", function(data) {
+				data.data.unshift(data.label);
+				data.time.unshift('x');
+				chart{{ dev.id }}.load({
+					columns: [
+						data.time,
+						data.data
+  				    ],
+				});
+			});
+		};
+		setInterval('update{{dev.id}}()',100000);  
+	</script>
+</div>
+{% if content.path == 'dashboard' %}
+		{% include '/tools/period.html' %}
+{% endif %}
+
+{% endif %}
+<div class="card-footer m-0 p-0 mx-auto">{% include '/tools/actions.html' %}</div>

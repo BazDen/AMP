@@ -1,0 +1,36 @@
+{% if content.layout==1 %}
+    <div class="card shadow m-1" style="width:49%;">
+{% elif content.layout==2 %}
+    <div class="card shadow m-1" style="width:29%">
+{% elif content.layout==3 %}
+    <div class="card shadow m-1" style="width:24%">
+{% else %}
+    <div class="card shadow m-1" style="width:99%">	
+{% endif %}
+    <div class="card-header bg-dark m-0 p-0" style="color:white;"><center>
+		<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; 
+		<i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i> &nbsp;
+	Badges
+</div>
+<div class="card-body m-2 p-0">
+	<span class="badge badge-primary">Primary</span>
+<span class="badge badge-secondary">Secondary</span>
+<span class="badge badge-success">Success</span>
+<span class="badge badge-danger">Danger</span>
+<span class="badge badge-warning">Warning</span>
+<span class="badge badge-info">Info</span>
+<span class="badge badge-light">Light</span>
+<span class="badge badge-dark">Dark</span>
+<hr>
+<span class="badge badge-pill badge-primary">Primary</span>
+<span class="badge badge-pill badge-secondary">Secondary</span>
+<span class="badge badge-pill badge-success">Success</span>
+<span class="badge badge-pill badge-danger">Danger</span>
+<span class="badge badge-pill badge-warning">Warning</span>
+<span class="badge badge-pill badge-info">Info</span>
+<span class="badge badge-pill badge-light">Light</span>
+<span class="badge badge-pill badge-dark">Dark</span>
+<hr>
+
+</div>
+</div>    

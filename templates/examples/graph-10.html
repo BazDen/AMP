@@ -1,0 +1,76 @@
+{% if content.layout==1 %}
+    <div class="card shadow m-1" style="width:49%;">
+{% elif content.layout==2 %}
+    <div class="card shadow m-1" style="width:29%">
+{% elif content.layout==3 %}
+    <div class="card shadow m-1" style="width:24%">
+{% else %}
+    <div class="card shadow m-1" style="width:99%">	
+{% endif %}
+                <div class="card-header bg-dark m-0 p-0" style="color:white;">
+                    <center>
+                        <i class="fa fa-check-square" aria-hidden="true"></i> &nbsp;
+                        <i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i> &nbsp;
+                        Gauge chart
+                </div>
+                <div class="card-body m-2 p-0">
+                    <div id='c10'></div>
+                    <script>
+                        var chart10 = c3.generate({
+                            bindto: '#c10',
+                            data: {
+                                columns: [
+                                    ['data', 91.4]
+                                ],
+                                type: 'gauge',
+                                onclick: function (d, i) { console.log("onclick", d, i); },
+                                onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                                onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                            },
+                            gauge: {
+                            },
+                            color: {
+                                pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+                                threshold: {
+                                    //            unit: 'value', // percentage is default
+                                    //            max: 200, // 100 is default
+                                    values: [30, 60, 90, 100]
+                                }
+                            },
+                            size: {
+                                height: 180
+                            }
+                        });
+
+                        setTimeout(function () {
+                            chart10.load({
+                                columns: [['data', 10]]
+                            });
+                        }, 1000);
+
+                        setTimeout(function () {
+                            chart10.load({
+                                columns: [['data', 50]]
+                            });
+                        }, 2000);
+
+                        setTimeout(function () {
+                            chart10.load({
+                                columns: [['data', 70]]
+                            });
+                        }, 3000);
+
+                        setTimeout(function () {
+                            chart10.load({
+                                columns: [['data', 0]]
+                            });
+                        }, 4000);
+
+                        setTimeout(function () {
+                            chart10.load({
+                                columns: [['data', 100]]
+                            });
+                        }, 5000);
+                    </script>
+                </div>
+            </div>

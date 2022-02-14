@@ -1,0 +1,35 @@
+{% if content.layout==1 %}
+    <div class="card shadow m-1" style="width:49%;">
+{% elif content.layout==2 %}
+    <div class="card shadow m-1" style="width:29%">
+{% elif content.layout==3 %}
+    <div class="card shadow m-1" style="width:24%">
+{% else %}
+    <div class="card shadow m-1" style="width:99%">	
+{% endif %}
+    <div class="card-header bg-dark m-0 p-0" style="color:white;"><center>
+		<i class="fa fa-check-square" aria-hidden="true"></i> &nbsp; 
+		<i class="fa fa-window-close" aria-hidden="true" style="color:red;"></i> &nbsp;
+	Login form
+</div>
+<div class="card-body m-2 p-0">
+	<form class="" method="POST" action="/auth/login">
+		<div class='row'>
+		
+		<div class='col-1' style="align-self: end;"><label for="username"><i class="fa fa-user" aria-hidden="true" style="font-size: larger;"></i></label></div>
+		<div class='col'><input class="form-control m-1" id="username" name="username" type="text"></div>
+		</div>
+		<div class='row'>
+		<div class='col-1' style="align-self: end;"><label for="password"><i class="fa fa-key" aria-hidden="true" style="font-size: larger;"></i></label></div>
+		<div class='col'><input class="form-control m-1" id="password" name="password" type="password"></div>
+		</div>
+		<br>
+		<center>
+			<button type="submit" class="btn btn-primary">
+				&nbsp;<i class="fa fa-sign-in-alt" aria-hidden="true" style="font-size: larger;"></i>&nbsp;
+			</button>
+		</center>
+		
+	</form>
+</div>
+</div>    

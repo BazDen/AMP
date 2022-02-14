@@ -1,0 +1,8 @@
+<div class="row justify-content-center align-items-center m-1 p-1">
+	{% set u=content.user %}
+	{% include '/cards/settings_user.html' %}
+	<div class='container'><br></div>
+	{% if u.status|int == 1 %}
+		{% include '/cards/settings_srv.html' %}
+	{% endif %}
+</div>

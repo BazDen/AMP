@@ -1,0 +1,20 @@
+<html lang="ru">
+{% include 'head.html' %}
+<body>
+{% include 'header.html' %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md" id="main">
+			{% if content.path == 'index' %}{% include 'examples.html' %}
+			{% elif content.path == 'users' %}{% include 'users.html' %}
+			{% elif content.path == 'settings' %}{% include 'settings.html' %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+<footer>
+	{% include 'footer.html' %}
+</footer>
+</body>
+</html>

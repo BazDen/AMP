@@ -1,0 +1,43 @@
+<div class="modal fade" id="TZModal" name="TZModal" aria-labelledby="TZModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark" style="padding:5px 5px;color:white;">
+        <center>&nbsp;&nbsp;{{ content.labels.tz }}</center>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		<form action="/tools/srvtz/" method="post">
+			<div class="form-group" style="margin-bottom:0rem;">
+			<div class="modal-body" style="padding:5px 5px;">
+				<table class="table-borderless" width=100%>
+				<input class="form-control" id="id" name="id" type="hidden">
+				<input class="form-control" id="path" name="path" type="hidden" value="{{ content.path }}">
+				<input class="form-control" id="typetz" name="typetz" type="hidden">
+				<tr><td><label for="tz">{{ content.labels.tz }}</label></td><td><select class="form-control" id="tz" name="tz" required>
+				{% for t in content.tz %}
+					<option value="{{ t.id }}">{{ t.name }}</option>
+				{% endfor %}
+				</select></td>
+				</table>
+
+			</div>
+			<div class="modal-footer" style="padding:5px 5px;">
+					<button type="submit" class="btn btn-outline-primary">{{ content.labels.save }}</button>
+					<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">{{ content.labels.cancel }}</button>
+			</div>
+			</div>
+		</form>
+    </div>
+  </div>
+</div>
+<script>
+$('#TZModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var typetz = button.data('type')
+  var tz = button.data('tz')
+  var modal = $(this)
+  modal.find('[name=tz]').val(tz)
+  modal.find('[name=typetz]').val(typetz)
+})
+</script>

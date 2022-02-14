@@ -1,0 +1,35 @@
+<div class="modal fade" id="UserChangePassModal" name="UserChangePassModal" aria-labelledby="UserChangePassModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark" style="padding:5px 5px;color:white;">
+        <center>&nbsp;&nbsp;{{ content.labels.change_password }}</center>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		<form action="/user/change_password/" method="post">
+			<div class="form-group" style="margin-bottom:0rem;">
+			<div class="modal-body" style="padding:5px 5px;">
+				<table class="table-borderless" width=100%>
+				<input class="form-control" id="id" name="id" type="hidden">
+				<input class="form-control" id="path" name="path" type="hidden" value="{{ content.path }}">
+				<tr><td><label for="password">{{ content.labels.new_password }}</label></td><td><input class="form-control" id="password" name="password" type="password" required minlength=7></td>
+				</table>
+			</div>
+			<div class="modal-footer" style="padding:5px 5px;">
+					<button type="submit" class="btn btn-outline-primary">{{ content.labels.save }}</button>
+					<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">{{ content.labels.cancel }}</button>
+			</div>
+			</div>
+		</form>
+    </div>
+  </div>
+</div>
+<script>
+$('#UserChangePassModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var modal = $(this)
+  modal.find('[name=id]').val(id)
+})
+</script>
