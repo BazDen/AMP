@@ -1,0 +1,1 @@
+21/02/2022: If the server name in the settings == AMP, then show the AMP logo in header. Else, show the server name in header.

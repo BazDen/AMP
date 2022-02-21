@@ -6,13 +6,19 @@
 	<center>
 	<table class="table table-stripped table-hover table-sm">
 			<div class="row border">
+			  <div class="col-sm-2" style="padding:0rem;"><b>{{ content.labels.name }}</b></div>
+			  <div class="col-sm-8" style="padding:0rem;"> {{ content.srvname }} </div>
+			  <div class="col-sm-2" style="padding:0rem;">{% include '/tools/srv_name.html' %}</div>
+			</div>
+			<div class="row border">
 			  <div class="col-sm-2" style="padding:0rem;"><b>{{ content.labels.tz }}</b></div>
 			  <div class="col-sm-8" style="padding:0rem;"> {{ content.srvtz_name }} </div>
 			  <div class="col-sm-2" style="padding:0rem;">{% include '/tools/tz.html' %}</div>
 			</div>
-
 	</table>
 {% include '/forms/tz.html' %}
+{% include '/forms/srv_name.html' %}
+
 </div>
 </div>
 </div>

@@ -38,27 +38,29 @@ manager.cookie_name = 'amp'
 async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request, })
 
+async def make_base_content(user):
+    content=dict()
+    content['labels'] = await get_labels(await get_lang(user.lang))
+    content['user'] = user
+    content['srvname'] = await get_srv_name()
+    return content
 
 @app.get("/admin/", response_class=HTMLResponse, summary="Main admin page")
 @app.get("/admin/index/", response_class=HTMLResponse, summary="Main admin page", tags=['Dashboard'])
 async def admin(request: Request, user=Depends(manager)):
-    content=dict()
-    content['labels'] = await get_labels(await get_lang(user.lang))
+    content=await make_base_content(user)
     content['show_layout'] = True
     content['path'] = 'index'
     content['layout'] = get_layout(user.id, content['path'])
-    content['user'] = user
     return templates.TemplateResponse("index.html", {"request": request, "content": content})
     
     
 @app.get("/admin/users/", response_class=HTMLResponse, summary="Users management", tags=['Users'])
 async def admin(request: Request, user=Depends(manager)):
     if int(user.status) == 1:
-        content=dict()
-        content['labels'] = await get_labels(await get_lang(user.lang))
+        content=await make_base_content(user)
         content['show_layout'] = False
         content['path'] = 'users'
-        content['user'] = user
         content['groups'] = await list_groups(user.status, user.group)
         content['users'] = list_users()
         content['status'] = list_status(await get_lang(user.lang))
@@ -71,11 +73,9 @@ async def admin(request: Request, user=Depends(manager)):
 
 @app.get("/admin/settings/", response_class=HTMLResponse, summary="Settings page", tags=['Settings'])
 async def admin(request: Request, user=Depends(manager)):
-    content=dict()
-    content['labels'] = await get_labels(await get_lang(user.lang))
+    content=await make_base_content(user)
     content['show_layout'] = False
     content['path'] = 'settings'
-    content['user'] = user
     content['groupname'] = ''
     gl = await list_groups(user.status, user.group)
     for g in gl:
@@ -175,7 +175,14 @@ async def change_srvtz(typetz: str = Form('type'), tz: int = Form('tz'), path: s
     resp = RedirectResponse(url="/admin/"+str(path)+"/",status_code=status.HTTP_302_FOUND)
     return resp    
     
-  
+@app.post('/tools/srvname/', response_class=HTMLResponse, summary="Change server name", tags=['Tools'])
+async def change_srvname(srvname: str = Form('srvname'), path: str = Form('path'), user=Depends(manager)):
+    if int(user.status)==1:
+        await set_srv_name(srvname)
+    resp = RedirectResponse(url="/admin/"+str(path)+"/",status_code=status.HTTP_302_FOUND)
+    return resp  
+
+
 # the python-multipart package is required to use the OAuth2PasswordRequestForm
 @app.post('/auth/login', tags=['Users'])
 def login(data: OAuth2PasswordRequestForm = Depends()):

@@ -2,7 +2,13 @@
 <div class="justify-content-start">
 <button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="{{ content.labels.menu }}" title="{{ content.labels.menu }}"><i class="fa fa-bars" aria-hidden="true"  style="color:white;"></i></button>
 </div>
-<a class="d-none d-sm-block mx-auto" href="/admin/index"><img src="/static/img/logo.png"></a>
+<a class="d-none d-sm-block mx-auto text-white" href="/admin/index">
+{% if content.srvname=='AMP' %}
+	<img src="/static/img/logo.png">
+{% else %}	
+	{{ content.srvname }}
+{% endif %}
+</a>
 <div class="justify-content-end">
 
 {% if content.user.status|int==1 %}

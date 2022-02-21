@@ -1,0 +1,39 @@
+<div class="modal fade" id="SrvModal" name="SrvModal" aria-labelledby="SrvModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark" style="padding:5px 5px;color:white;">
+        <center>&nbsp;&nbsp;{{ content.labels.name }}</center>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		<form action="/tools/srvname/" method="post">
+			<div class="form-group" style="margin-bottom:0rem;">
+			<div class="modal-body" style="padding:5px 5px;">
+				<table class="table-borderless" width=100%>
+				<input class="form-control" id="id" name="id" type="hidden">
+				<input class="form-control" id="path" name="path" type="hidden" value="{{ content.path }}">
+				
+				<tr><td><label for="srvname">{{ content.labels.name }}</label></td><td>
+				<input class="form-control" id="srvname" name="srvname" type="text" required>
+				</td>
+				</table>
+
+			</div>
+			<div class="modal-footer" style="padding:5px 5px;">
+					<button type="submit" class="btn btn-outline-primary">{{ content.labels.save }}</button>
+					<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">{{ content.labels.cancel }}</button>
+			</div>
+			</div>
+		</form>
+    </div>
+  </div>
+</div>
+<script>
+$('#SrvModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var srvname = button.data('srvname')
+  var modal = $(this)
+  modal.find('[name=srvname]').val(srvname)
+})
+</script>
