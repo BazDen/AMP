@@ -27,7 +27,7 @@
 <li> Password: demo-123 </li>
 </ul>
 
-&nbsp;&nbsp;The project also contains Docker files so you can build your image and container.
+&nbsp;&nbsp;The project also contains Docker files so you can build your image in container.
 
 <h1>License</h1>
 This project is licensed under the GPL-3.0 License.
