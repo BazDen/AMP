@@ -1,5 +1,5 @@
 from peewee import *
-from .base import BaseModel
+from modules.base import BaseModel
 
 
 class Lang(BaseModel):
@@ -9,6 +9,15 @@ class Lang(BaseModel):
 
     class Meta:
         db_table = "lang"
+
+class Vocabulary(BaseModel):
+    id = PrimaryKeyField(null=False)
+    code = CharField(max_length=2)
+    name = CharField()
+    value = CharField()
+
+    class Meta:
+        db_table = "vocabulary"
 
 
 async def list_lang(skip: int = 0, limit: int = 100):
@@ -21,3 +30,8 @@ async def get_lang(id: int):
         return 'en'
     else:     
         return l.code
+
+
+async def get_labels(code: str):
+    return { l.name: l.value for l in Vocabulary.select().filter(Vocabulary.code==code) }
+

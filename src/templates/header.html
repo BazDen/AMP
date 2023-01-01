@@ -11,18 +11,14 @@
 </a>
 <div class="justify-content-end">
 
-{% if content.user.status|int==1 %}
-<a class="button btn-sm" href="/admin/users"><i class="fa fa-user" aria-hidden="true" style="color:white;font-size: larger;" title="{{ content.labels.users }}"></i></a>&nbsp;
-{% endif %}
-<a class="button btn-sm" href="/admin/settings"><i class="fa fa-cog" aria-hidden="true" style="color:white;font-size: larger;" title="{{ content.labels.settings }}"></i></a>&nbsp;
-
+<div class="badge bg-light">{{ content.language|upper }}</div>&nbsp;&nbsp;
 {% if content.show_layout==True %}
 	<button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#layoutToggle" aria-controls="layoutToggle" aria-expanded="false" aria-label="Расположение"><i class="fa fa-th" aria-hidden="true" style="color:white;"></i></button>&nbsp;
 {% endif %}
-<a href="/" class="badge badge-dark"><i class="fa fa-times" aria-hidden="true" style="font-size:160%;" title="{{ content.labels.logout }}"></i></a>&nbsp;
+
 </div>
 </nav>
 {% include '/menu/menu.html' %}
-{% if content.show_layout==True %}	
+{% if content.show_layout %}	
 	{% include '/menu/layout.html' %}
 {% endif %}	

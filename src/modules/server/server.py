@@ -1,6 +1,5 @@
 from peewee import *
-from .base import BaseModel
-from models.tz import *
+from modules.base import BaseModel
 
 
 class SrvSettings(BaseModel):

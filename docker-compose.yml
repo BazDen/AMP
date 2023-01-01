@@ -1,11 +1,14 @@
 version: "3.8"
+
 services:
-  app:
+  webserver:
     build: .
+    volumes:
+      - ./src:/amp
     restart: always
     network_mode: bridge
     ports:
-      - 80:80
+      - 8080:8080
     image: amp
-    command: uvicorn main:app --reload --port 80 --host 0.0.0.0
+    command: bash -c "cd /amp && uvicorn main:app --reload --port 8080 --host 0.0.0.0"
     

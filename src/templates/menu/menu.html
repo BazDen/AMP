@@ -1,0 +1,10 @@
+<div class="col-md-auto m-0 p-0 {% if content.show_menu!=True %} collapse {% endif %}" id="navbarToggle">
+  <ul class="nav nav-tabs bg-dark">
+    <li class="nav-item">
+      <a class="nav-link {% if content.path == 'index' %}active text-dark {% else %} text-light {% endif %}" href="/admin/">{{ content.labels.dashboard }}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-light" href="/docs/">API</a>
+    </li>
+  </ul>
+</div>

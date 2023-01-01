@@ -1,5 +1,5 @@
 from peewee import *
-from .base import BaseModel
+from modules.base import BaseModel
 
 
 class TZ(BaseModel):
