@@ -1,5 +1,5 @@
 <h1 align="center">AMP: is a fast admin dashboard template based on FastAPI</h1>
-<h3 align="center"><img src='./static/img/logo.png'></h3>
+<h3 align="center"><img src='./src/static/img/logo.png'></h3>
 
 
 <h1>Introduction</h1>
@@ -7,9 +7,9 @@
 
 <h1>Screenshots</h1>
 <h3 align="center">Desktop view</h3>
-<img src='./static/img/desktop_view.jpg' width='100%'>
+<img src='./src/static/img/desktop_view.jpg' width='100%'>
 <h3 align="center">Mobile view</h3>
-<h3 align="center"><img src='./static/img/mobile_view.jpg' width='25%'></h3>
+<h3 align="center"><img src='./src/static/img/mobile_view.jpg' width='25%'></h3>
 
 <h1>Demo</h1>
 <img src='./static/img/demo.gif' width='100%'>
