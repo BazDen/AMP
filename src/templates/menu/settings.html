@@ -1,0 +1,26 @@
+<div class="col-md-auto m-0 p-0 collapse" id="settingsToggle">
+<div class="card card-body bg-dark" style="color:white;">
+  {{ content.labels.language }}: &nbsp;
+  <div class="btn-group" role="group" aria-label="Language">
+    {% for lang in content.languages %}
+      <a role="button" class="btn-sm btn-light" href="/{{ lang }}/{{ content.layout }}">{{ lang }}</a>&nbsp;
+    {% endfor %}
+  </div>
+
+  {{ content.labels.layout }}: &nbsp;
+    <ul class="nav bg-dark">
+    <li class="nav-item mx-auto">
+    <a class="nav-link text-light" href="/{{ content.language }}/0"><img src="/static/img/layout0.png" width=20px></a>
+    </li>
+    <li class="nav-item mx-auto">
+      <a class="nav-link text-light" href="/{{ content.language }}/1/"><img src="/static/img/layout1.png" width=20px></a>
+    </li>
+    <li class="nav-item mx-auto">
+      <a class="nav-link text-light" href="/{{ content.language }}/2/"><img src="/static/img/layout2.png" width=20px></a>
+    </li>
+    <li class="nav-item mx-auto">
+      <a class="nav-link text-light" href="/{{ content.language }}/3/"><img src="/static/img/layout3.png" width=20px></a>
+    </li>
+  </ul>
+</div>
+</div>

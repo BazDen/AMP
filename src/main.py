@@ -1,23 +1,34 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.requests import Request
+from fastapi.templating import Jinja2Templates
 
-from config.database import db_connection
-from modules import *
+from translate import get_labels, get_languages
+import config
 
-app = FastAPI(title='AMP', description='AMP', version='0.3')
+app = FastAPI(title="AMP", description="AMP", version="0.3")
 app.mount("/static", StaticFiles(directory="./static"), name="static")
-
-app.include_router(dashboard.router)
-
-
-@app.on_event("startup")
-async def startup():
-    if db_connection.is_closed():
-        db_connection.connect()
+templates = Jinja2Templates(directory="./templates")
 
 
-@app.on_event("shutdown")
-async def shutdown():
-    print("Closing...")
-    if not db_connection.is_closed():
-        db_connection.close()
+@app.get("/")
+@app.get("/{language:str}/{layout:int}/")
+async def root(
+    request: Request,
+    language: str = config.default_language,
+    layout: int = config.default_layout,
+):
+    content = {
+        "show_layout": True,
+        "show_settings": True,
+        "show_menu": True,
+        "path": "index",
+        "layout": layout,
+        "labels": get_labels(language),
+        "languages": get_languages(),
+        "language": language,
+    }
+
+    return templates.TemplateResponse(
+        name="index.html", context={"request": request, "content": content}
+    )

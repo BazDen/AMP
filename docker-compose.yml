@@ -1,14 +1,13 @@
-version: "3.8"
-
 services:
-  webserver:
-    build: .
-    volumes:
-      - ./src:/amp
+  amp:
+    image: amp:latest
     restart: always
-    network_mode: bridge
     ports:
-      - 8080:8080
-    image: amp
-    command: bash -c "cd /amp && uvicorn main:app --reload --port 8080 --host 0.0.0.0"
+      - "8000:8000"
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "localhost:host-gateway"
+
+
     

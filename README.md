@@ -3,7 +3,8 @@
 
 
 <h1>Introduction</h1>
-    AMP: is a fast admin dashboard template based on FastAPI. The project uses its own database sqlite, which allows you to start using immediately after installation. Peewee is used as an ORM. The templates use bootstrap and C3(D3-based reusable chart library). 
+    AMP: is a fast admin dashboard template based on FastAPI. 
+    The templates use bootstrap and C3(D3-based reusable chart library). 
 
 <h1>Screenshots</h1>
 <h3 align="center">Desktop view</h3>

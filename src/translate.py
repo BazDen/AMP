@@ -1,0 +1,76 @@
+vocabulary_ru = {
+    "dashboard": "Панель управления",
+    "users": "Пользователи",
+    "settings": "Настройки",
+    "exit": "Выход",
+    "groups": "Группы",
+    "name": "Имя",
+    "fullname": "ФИО",
+    "addgroup": "Добавить группу",
+    "adduser": "Добавить пользователя",
+    "user": "Пользователь",
+    "group": "Группа",
+    "status": "Статус",
+    "tz": "Часовой пояс",
+    "menu": "Меню",
+    "logout": "Выход",
+    "edit": "Редактировать",
+    "remove": "Удалить",
+    "user_settings": "Настройки пользователя",
+    "server_settings": "Настройки сервера",
+    "change_password": "Сменить пароль",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "password": "Пароль",
+    "language": "Язык",
+    "username": "Имя пользователя",
+    "new_password": "Новый пароль",
+    "are_you_sure": "Вы уверены ?",
+    "yes": "Да",
+    "no": "Нет",
+    "copyright": "Разработано Денисом Базарновым",
+    "layout": "Расположение",
+}
+vocabulary_en = {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "settings": "Settings",
+    "exit": "Exit",
+    "groups": "Groups",
+    "name": "Name",
+    "fullname": "Fullname",
+    "addgroup": "Add group",
+    "adduser": "Add user",
+    "user": "User",
+    "group": "Group",
+    "status": "Status",
+    "tz": "TZ",
+    "menu": "Menu",
+    "logout": "Logout",
+    "edit": "Edit",
+    "remove": "Remove",
+    "user_settings": "User settings",
+    "server_settings": "Server settings",
+    "change_password": "Change password",
+    "cancel": "Cancel",
+    "save": "Save",
+    "password": "Password",
+    "language": "Language",
+    "username": "Username",
+    "new_password": "New password",
+    "are_you_sure": "Are you sure ?",
+    "yes": "Yes",
+    "no": "No",
+    "copyright": "Copyright by Denis Bazarnov",
+    "layout": "Layout",
+}
+
+vocabulary = {"EN": vocabulary_en, "RU": vocabulary_ru}
+
+
+def get_labels(code: str):
+    return vocabulary.get(code, vocabulary_en)
+
+
+def get_languages():
+    return [key for key in vocabulary.keys()]

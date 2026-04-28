@@ -3,22 +3,28 @@
 <button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="{{ content.labels.menu }}" title="{{ content.labels.menu }}"><i class="fa fa-bars" aria-hidden="true"  style="color:white;"></i></button>
 </div>
 <a class="d-none d-sm-block mx-auto text-white" href="/admin/index">
-{% if content.srvname=='AMP' %}
+<!-- {% if content.srvname=='AMP' %} -->
 	<img src="/static/img/logo.png">
-{% else %}	
+<!-- {% else %}	
 	{{ content.srvname }}
-{% endif %}
+{% endif %} -->
 </a>
 <div class="justify-content-end">
 
-<div class="badge bg-light">{{ content.language|upper }}</div>&nbsp;&nbsp;
-{% if content.show_layout==True %}
-	<button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#layoutToggle" aria-controls="layoutToggle" aria-expanded="false" aria-label="Расположение"><i class="fa fa-th" aria-hidden="true" style="color:white;"></i></button>&nbsp;
+<!-- <div class="badge bg-light" id="language"></div>&nbsp;&nbsp; -->
+{% if content.show_settings %}	
+	<button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#settingsToggle" aria-controls="settingsToggle" aria-expanded="false"><i class="fa fa-cog" aria-hidden="true" style="color:white;"></i></button>&nbsp;
 {% endif %}
+<!-- {% if content.show_layout==True %}
+	<button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#layoutToggle" aria-controls="layoutToggle" aria-expanded="false"><i class="fa fa-th" aria-hidden="true" style="color:white;"></i></button>&nbsp;
+{% endif %} -->
 
 </div>
 </nav>
 {% include '/menu/menu.html' %}
-{% if content.show_layout %}	
+<!-- {% if content.show_layout %}	
 	{% include '/menu/layout.html' %}
-{% endif %}	
+{% endif %}	 -->
+{% if content.show_settings %}	
+	{% include '/menu/settings.html' %}
+{% endif %}
